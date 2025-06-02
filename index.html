@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualizador de Imagens</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color:rgb(0, 51, 102);
+            margin: 0;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            box-sizing: border-box;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .header h1 {
+            color: #333;
+            margin: 0;
+        }
+
+        .content {
+            display: flex;
+            gap: 15px;
+            flex-grow: 1;
+        }
+
+        .left-panel, .right-panel {
+            background-color: #e9e9e9;
+            border-radius: 5px;
+            padding: 15px;
+            box-sizing: border-box;
+        }
+
+        .left-panel {
+            flex: 0 0 150px; /* Largura fixa para o painel de ferramentas */
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .left-panel button {
+            width: 100%;
+            padding: 10px 15px;
+            border: none;
+            background-color: rgb(0, 51, 102);
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.2s;
+        }
+
+        .left-panel button:hover {
+            background-color: rgb(0, 51, 102);
+        }
+
+        .right-panel {
+            flex-grow: 1; /* Ocupa o espaço restante */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden; /* Garante que a imagem não transborde */
+            position: relative; /* Para o overlay de ampliação */
+        }
+
+        .image-container {
+            max-width: 100%;
+            max-height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            max-height: 100%;
+            display: block;
+            cursor: pointer; /* Indica que a imagem é clicável */
+            transition: transform 0.3s ease; /* Suaviza a transição da ampliação */
+        }
+
+        .image-container img.enlarged {
+            transform: scale(1.5); /* Exemplo de ampliação */
+            cursor: zoom-out;
+        }
+
+        .footer {
+            background-color: #e9e9e9;
+            border-radius: 5px;
+            padding: 15px;
+            text-align: center;
+            color: #555;
+            min-height: 80px; /* Altura mínima para observações */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Overlay para ampliação da imagem */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: none; /* Escondido por padrão */
+            justify-content: center;
+            align-items: center;
+            z-index: 1000; /* Garante que fique acima de outros elementos */
+        }
+
+        .overlay img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            cursor: zoom-out;
+        }
+    </style>
+</head>
+<body background= "rgb(0, 51, 102)">
+    <div class="container">
+        <div class="header">
+            <h1>Histologia - Laminas</h1>
+        </div>
+        <div class="content">
+            <div class="left-panel">
+                <h3>Ferramentas</h3>
+                <button onclick="alert('Botão Zoom In clicado!')">Ferramenta 1</button>
+                <button onclick="alert('Botão Zoom Out clicado!')">Ferramenta 2</button>
+                <button onclick="alert('Botão Girar clicado!')">Ferramenta 3</button>
+                <button onclick="alert('Botão Compartilhar clicado!')">Ferramenta 4</button>
+                <button onclick="alert('Botão Compartilhar clicado!')">Ferramenta 5</button>
+                <button onclick="alert('Botão Compartilhar clicado!')">Ferramenta 6</button>
+                <button onclick="alert('Botão Compartilhar clicado!')">Ferramenta 7</button>
+                <button onclick="alert('Botão Compartilhar clicado!')">Ferramenta 8</button>
+
+            </div>
+            <div class="right-panel">
+                <div class="image-container">
+                    <img id="mainImage" src="Histology-Guide-001.jpg" alt="Imagem Exibida" height="100%" width="100%">
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <p id="imageNotes">Observações sobre a imagem serão exibidas aqui.</p>
+        </div>
+    </div>
+
+    <div class="overlay" id="imageOverlay">
+        <img src="" alt="Imagem Ampliada">
+    </div>
+
+    <script>
+        const mainImage = document.getElementById('mainImage');
+        const imageOverlay = document.getElementById('imageOverlay');
+        const overlayImage = imageOverlay.querySelector('img');
+        const imageNotes = document.getElementById('imageNotes');
+
+        // Adiciona um evento de clique para ampliar a imagem
+        mainImage.addEventListener('click', () => {
+            overlayImage.src = mainImage.src;
+            imageOverlay.style.display = 'flex';
+        });
+
+        // Adiciona um evento de clique para fechar a ampliação
+        imageOverlay.addEventListener('click', () => {
+            imageOverlay.style.display = 'none';
+        });
+
+        // Exemplo de como você pode mudar a imagem e as observações (você pode carregar dinamicamente)
+        // setTimeout(() => {
+        //     mainImage.src = 'https://via.placeholder.com/800x600?text=Nova+Imagem';
+        //     imageNotes.textContent = 'Esta é uma nova imagem demonstrativa com observações atualizadas.';
+        // }, 3000);
+    </script>
+</body>
+</html>
