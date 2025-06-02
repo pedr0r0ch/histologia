@@ -45,7 +45,7 @@
         }
 
         .left-panel, .right-panel {
-            background-color: #e9e9e9;
+            background-color: rgb(225, 225, 225);
             border-radius: 5px;
             padding: 15px;
             box-sizing: border-box;
@@ -63,16 +63,16 @@
             width: 100%;
             padding: 10px 15px;
             border: none;
-            background-color: rgb(0, 51, 102);
+            background-color: rgb(100, 100, 100);
             color: white;
             border-radius: 4px;
             cursor: pointer;
             font-size: 16px;
-            transition: background-color 0.2s;
+            transition: blackground color 0.1s;
         }
 
         .left-panel button:hover {
-            background-color: rgb(0, 51, 102);
+            background-color: rgb(0, 0, 0);
         }
 
         .right-panel {
@@ -106,7 +106,7 @@
         }
 
         .footer {
-            background-color: #e9e9e9;
+            background-color: rgb(225, 225, 225);
             border-radius: 5px;
             padding: 15px;
             text-align: center;
@@ -147,14 +147,14 @@
         <div class="content">
             <div class="left-panel">
                 <h3>Ferramentas</h3>
-                <button onclick="alert('Botão Zoom In clicado!')">Ferramenta 1</button>
-                <button onclick="alert('Botão Zoom Out clicado!')">Ferramenta 2</button>
-                <button onclick="alert('Botão Girar clicado!')">Ferramenta 3</button>
-                <button onclick="alert('Botão Compartilhar clicado!')">Ferramenta 4</button>
-                <button onclick="alert('Botão Compartilhar clicado!')">Ferramenta 5</button>
-                <button onclick="alert('Botão Compartilhar clicado!')">Ferramenta 6</button>
-                <button onclick="alert('Botão Compartilhar clicado!')">Ferramenta 7</button>
-                <button onclick="alert('Botão Compartilhar clicado!')">Ferramenta 8</button>
+                <button onclick="alert('Botão clicado')">Ferramenta 1</button>
+                <button onclick="alert('Botão clicado!')">Ferramenta 2</button>
+                <button onclick="alert('Botão clicado!')">Ferramenta 3</button>
+                <button onclick="alert('Botão clicado!')">Ferramenta 4</button>
+                <button onclick="alert('Botão clicado!')">Ferramenta 5</button>
+                <button onclick="alert('Botão clicado!')">Ferramenta 6</button>
+                <button onclick="alert('Botão clicado!')">Ferramenta 7</button>
+                <button onclick="alert('Botão clicado!')">Ferramenta 8</button>
 
             </div>
             <div class="right-panel">
@@ -188,12 +188,7 @@
         imageOverlay.addEventListener('click', () => {
             imageOverlay.style.display = 'none';
         });
-
-        // Exemplo de como você pode mudar a imagem e as observações (você pode carregar dinamicamente)
-        // setTimeout(() => {
-        //     mainImage.src = 'https://via.placeholder.com/800x600?text=Nova+Imagem';
-        //     imageNotes.textContent = 'Esta é uma nova imagem demonstrativa com observações atualizadas.';
-        // }, 3000);
+        
     </script>
 </body>
 </html>
