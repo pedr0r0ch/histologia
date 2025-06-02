@@ -63,7 +63,7 @@
             width: 100%;
             padding: 10px 15px;
             border: none;
-            background-color: rgb(100, 100, 100);
+            edrbackground-color: rgb(100, 100, 100);
             color: white;
             border-radius: 4px;
             cursor: pointer;
@@ -73,6 +73,13 @@
 
         .left-panel button:hover {
             background-color: rgb(0, 0, 0);
+        }
+
+        .right-panel button {
+            width: 5%;
+            padding: 10px 15px
+            border: none;
+            background-color
         }
 
         .right-panel {
@@ -155,11 +162,17 @@
                 <button onclick="alert('Botão clicado!')">Ferramenta 6</button>
                 <button onclick="alert('Botão clicado!')">Ferramenta 7</button>
                 <button onclick="alert('Botão clicado!')">Ferramenta 8</button>
-
+ 
             </div>
             <div class="right-panel">
+                
                 <div class="image-container">
                     <img id="mainImage" src="Histology-Guide-001.jpg" alt="Imagem Exibida" height="100%" width="100%">
+                <\div>
+
+                <div Class="image-buttons">
+                    <button>Zoom in<\button>
+                    <button>Zoom out<\button>
                 </div>
             </div>
         </div>
